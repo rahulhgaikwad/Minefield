@@ -51,7 +51,16 @@ FieldType Field::get(int x, int y)
  bool Field::isSafe(int x, int y)
  {
  	//TODO: Complete this function, isSafe(int,int)
- 	return true;
+   
+   if(get(x,y)==MINE_SHOWN || get(x,y)==MINE_SHOWN)
+   {
+     throw -1;
+   }
+   else
+   {
+     return true;
+   }
+ 	return false;
  }
 
 /**
