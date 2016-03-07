@@ -15,14 +15,21 @@ class FieldTest : public ::testing::Test
 		virtual void TearDown(){}
 };
 
-TEST(FieldTest, placeMineInBounds)
+
+TEST(FieldTest, fieldIsSafe)
 {
-	Field minefield;
-	
-	minefield.placeMine(4,5);
-	ASSERT_EQ( MINE_HIDDEN, minefield.get(4,5) );
-  ASSERT_EQ( MINE_HIDDEN, minefield.isSafe(4,5) );
+  Field minefield;
+  bool caught = true;
+  minefield.placeMine(4,2);
+  try
+  {
+    minefield.isSafe(4,3);
+    minefield.isSafe(4,5);
+    minefield.isSafe(4,4);
+  }
+  catch(int err)
+  {
+    caught = false;
+  }
+  ASSERT_TRUE(caught);
 }
-
-
-
